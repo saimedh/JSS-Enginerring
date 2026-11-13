@@ -4,8 +4,18 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'JSS Engineering project portfolio — machinery installation, plant erection, and O&M across India.',
+  title: 'Engineering Projects Portfolio',
+  description:
+    'Explore completed industrial projects by JSS Engineering: TMT Bar Rolling Mills, 350 TPD Sponge Iron DRI Plants, Ball Mill Foundations, and Heavy Kiln Maintenance across India.',
+  openGraph: {
+    title: 'Project Portfolio | JSS Engineering',
+    description:
+      'Case studies and project records for turnkey plant erection, heavy machinery installation, and O&M contracts delivered on time.',
+    url: 'https://jssengineering.in/projects',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/projects',
+  },
 }
 
 // Static projects – replace with DB data once backend is live

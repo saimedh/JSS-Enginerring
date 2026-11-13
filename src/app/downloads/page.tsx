@@ -3,8 +3,18 @@ import Image from 'next/image'
 import { FileDown } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Downloads',
-  description: 'Download the JSS Engineering company profile, capability statement, and other documents.',
+  title: 'Downloads & Technical Credentials',
+  description:
+    'Download JSS Engineering corporate profile, technical capability statement, and tender pre-qualification credentials for steel plant erection, civil works, and O&M.',
+  openGraph: {
+    title: 'Downloads & Credentials | JSS Engineering',
+    description:
+      'Corporate brochure, technical capability statement, and vendor qualification sheets for JSS Engineering.',
+    url: 'https://jssengineering.in/downloads',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/downloads',
+  },
 }
 
 const DOWNLOADS = [

@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
         html: `
           <p>Dear ${safeName},</p>
           <p>Thank you for reaching out to <strong>JSS Engineering</strong>. We have received your enquiry and our team will get back to you within one business day.</p>
-          <p>If you need immediate assistance, please call us at <strong>+91 98765 43210</strong> or reply to this email.</p>
+          <p>If you need immediate assistance, please call us at <strong>+91 94903 11640</strong> or reply to this email.</p>
           <br>
           <p>Warm regards,<br><strong>JSS Engineering</strong><br>Steel • Power • Execution<br>Tadipatri, Anantapur, AP 515411</p>
         `,

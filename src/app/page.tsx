@@ -339,17 +339,17 @@ function CTABand() {
               </Link>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+919490311640"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white text-white hover:text-navy-900 border border-white/20 hover:border-white font-heading font-bold text-base sm:text-lg py-4 px-8 rounded-lg shadow-md backdrop-blur-xs transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group"
               >
                 <div className="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                   <Phone size={14} />
                 </div>
-                <span>Call Us Now: +91 98765 43210</span>
+                <span>Call Us Now: +91 94903 11640</span>
               </a>
 
               <a
-                href="https://wa.me/919876543210?text=Hello%20JSS%20Engineering%2C%20I%20would%20like%20to%20discuss%20a%20project."
+                href="https://wa.me/919490311640?text=Hello%20JSS%20Engineering%2C%20I%20would%20like%20to%20discuss%20a%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500/20 hover:bg-green-500 text-green-300 hover:text-white border border-green-500/40 font-heading font-bold text-sm py-4 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95"

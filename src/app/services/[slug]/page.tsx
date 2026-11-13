@@ -161,9 +161,24 @@ type Props = { params: { slug: string } }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = SERVICES.find((s) => s.slug === params.slug)
   if (!service) return { title: 'Service Not Found' }
+  const detail = SERVICE_DETAILS[params.slug]
+  const title = `${service.title} | JSS Engineering`
+  const description = detail?.summary
+    ? `${detail.summary} JSS Engineering — Tadipatri, AP. Call +91 94903 11640.`
+    : `Specialist ${service.title} services across India by JSS Engineering.`
+
   return {
-    title: service.title,
-    description: SERVICE_DETAILS[params.slug]?.summary ?? '',
+    title,
+    description,
+    openGraph: {
+      title: `${service.title} | JSS Engineering`,
+      description,
+      url: `https://jssengineering.in/services/${params.slug}`,
+      images: [{ url: service.image, alt: service.imageAlt }],
+    },
+    alternates: {
+      canonical: `https://jssengineering.in/services/${params.slug}`,
+    },
   }
 }
 

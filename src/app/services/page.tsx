@@ -5,8 +5,18 @@ import { ArrowRight } from 'lucide-react'
 import { SERVICES } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Complete industrial engineering services from JSS Engineering — turnkey machinery installation, plant erection, civil works, O&M, and more.',
+  title: 'Industrial Engineering Services',
+  description:
+    'Full-scope industrial contracting: Turnkey Machinery Installation, Industrial Civil Works, Erection & Commissioning, Plant Relocation, Foundation Works, and O&M of DRI & Power Units across India.',
+  openGraph: {
+    title: 'Industrial Engineering Services | JSS Engineering',
+    description:
+      'Turnkey machinery installation, laser precision alignment, plant erection, and long-term O&M services for steel, DRI, and power plants across India.',
+    url: 'https://jssengineering.in/services',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/services',
+  },
 }
 
 export default function ServicesPage() {

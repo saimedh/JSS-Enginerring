@@ -4,8 +4,18 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Industries',
-  description: 'JSS Engineering serves coal mines, cement plants, sponge iron (DRI) units, furnaces, and rolling mills across India.',
+  title: 'Industries We Serve',
+  description:
+    'JSS Engineering serves heavy industrial sectors across India: Coal Mines, Cement Plants, Sponge Iron (DRI), Induction Furnaces, and Rolling Mills. Turnkey plant engineering and commissioning.',
+  openGraph: {
+    title: 'Industries We Serve | JSS Engineering',
+    description:
+      'Serving coal mines, cement plants, sponge iron (DRI) units, furnaces, and rolling mills across India with turnkey engineering and O&M.',
+    url: 'https://jssengineering.in/industries',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/industries',
+  },
 }
 
 const INDUSTRY_DETAILS = [

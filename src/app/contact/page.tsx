@@ -76,8 +76,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="font-heading font-bold text-navy-700 text-sm uppercase tracking-wide">Phone Direct</div>
-                    <a href="tel:+919876543210" className="text-steel-600 text-sm mt-1 hover:text-orange-500 transition-colors block font-medium">
-                      +91 98765 43210
+                    <a href="tel:+919490311640" className="text-steel-600 text-sm mt-1 hover:text-orange-500 transition-colors block font-medium">
+                      +91 94903 11640
                     </a>
                   </div>
                 </li>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                   <div>
                     <div className="font-heading font-bold text-navy-700 text-sm uppercase tracking-wide">WhatsApp Support</div>
                     <a
-                      href="https://wa.me/919876543210"
+                      href="https://wa.me/919490311640"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-steel-600 text-sm mt-1 hover:text-green-600 transition-colors block font-medium"
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 </div>
                 {status === 'error' && (
                   <p className="text-alertred text-sm bg-red-50 p-3 rounded-lg border border-red-200">
-                    Submission failed. Please email us directly at Jssengineering04@gmail.com or call +91 98765 43210.
+                    Submission failed. Please email us directly at Jssengineering04@gmail.com or call +91 94903 11640.
                   </p>
                 )}
                 <button

@@ -4,8 +4,18 @@ import Link from 'next/link'
 import { Target, Eye, Heart, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'Learn about JSS Engineering — our story, vision, mission, and values as a specialist steel plant erection and commissioning contractor based in Tadipatri, Anantapur.',
+  title: 'About Us | Industrial Engineering Contractor',
+  description:
+    'Learn about JSS Engineering — company history, leadership vision, mission, and core values. Trusted contractor for steel plant erection, civil works, and O&M based in Tadipatri, Anantapur, AP.',
+  openGraph: {
+    title: 'About JSS Engineering | Tadipatri, AP',
+    description:
+      'Industrial engineering contractor specialized in steel plant erection, DRI kilns, and machinery installation across India.',
+    url: 'https://jssengineering.in/about',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/about',
+  },
 }
 
 const VALUES = [

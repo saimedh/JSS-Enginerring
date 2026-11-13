@@ -3,8 +3,18 @@ import { CLIENTS } from '@/lib/utils'
 import { MapPin } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Clients',
-  description: "JSS Engineering's client portfolio includes UltraTech Cement, Western Coalfields, Rayalaseema Green Steel, Agroha TMT, and more.",
+  title: 'Our Clients & Industrial Partners',
+  description:
+    "Trusted by leading industrial operators across India including UltraTech Cement, Western Coalfields (RVR Projects), Rayalaseema Green Steel, Agroha TMT, and Singhal Enterprises.",
+  openGraph: {
+    title: 'Client Portfolio | JSS Engineering',
+    description:
+      'Delivering plant erection and commissioning for UltraTech Cement, Western Coalfields, and major steel/power plants across India.',
+    url: 'https://jssengineering.in/clients',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/clients',
+  },
 }
 
 export default function ClientsPage() {

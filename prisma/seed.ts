@@ -143,10 +143,10 @@ async function main() {
   const settings = [
     { key: 'company_name', value: 'JSS Engineering' },
     { key: 'tagline', value: 'Steel • Power • Execution' },
-    { key: 'phone', value: '+91 98765 43210' },
+    { key: 'phone', value: '+91 94903 11640' },
     { key: 'email', value: 'Jssengineering04@gmail.com' },
     { key: 'address', value: '#2/1035-4-3-A, Jayanagar Colony, Yellanur Road, Tadipatri, Anantapur, AP 515411' },
-    { key: 'whatsapp', value: '919876543210' },
+    { key: 'whatsapp', value: '919490311640' },
     { key: 'linkedin', value: '' },
     { key: 'established', value: '2021' },
   ]

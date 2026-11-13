@@ -57,10 +57,10 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <span className="text-steel-300">Tender &amp; Project Desk:</span>
           <a
-            href="tel:+919876543210"
+            href="tel:+919490311640"
             className="flex items-center gap-1.5 text-white hover:text-orange-400 font-heading font-semibold tracking-wide transition-colors"
           >
-            <Phone size={12} className="text-orange-500" /> +91 98765 43210
+            <Phone size={12} className="text-orange-500" /> +91 94903 11640
           </a>
         </div>
       </div>

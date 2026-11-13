@@ -77,8 +77,8 @@ export default function Footer() {
               <span>#2/1035-4-3-A, Jayanagar Colony, Yellanur Road, Tadipatri, Anantapur, AP 515411</span>
             </li>
             <li>
-              <a href="tel:+919876543210" className="flex gap-3 hover:text-orange-400 transition-colors">
-                <Phone size={16} className="text-orange-400 mt-0.5 shrink-0" /> +91 98765 43210
+              <a href="tel:+919490311640" className="flex gap-3 hover:text-orange-400 transition-colors">
+                <Phone size={16} className="text-orange-400 mt-0.5 shrink-0" /> +91 94903 11640
               </a>
             </li>
             <li>
@@ -88,7 +88,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919490311640"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-3 hover:text-orange-400 transition-colors"

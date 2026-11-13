@@ -2,8 +2,18 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'Policies',
-  description: 'Quality, Health & Safety, and Environment policies of JSS Engineering.',
+  title: 'Quality, HSE & Environmental Policies',
+  description:
+    'JSS Engineering Quality Policy and Health, Safety & Environment (HSE) standards. Strict compliance, Zero-Harm commitment, and OEM-tolerance benchmarks across industrial sites.',
+  openGraph: {
+    title: 'Quality & HSE Policies | JSS Engineering',
+    description:
+      'Rigorous quality management and zero-harm safety standards for steel plant erection, civil works, and commissioning across India.',
+    url: 'https://jssengineering.in/policies',
+  },
+  alternates: {
+    canonical: 'https://jssengineering.in/policies',
+  },
 }
 
 const POLICIES = [
