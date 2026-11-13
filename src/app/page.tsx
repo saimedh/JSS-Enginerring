@@ -8,62 +8,62 @@ import { SERVICES, INDUSTRIES, CLIENTS, STATS, WHY_CHOOSE } from '@/lib/utils'
 // ─── HERO ───────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative bg-navy-900 text-white overflow-hidden">
+    <section className="relative bg-navy-900 text-white overflow-hidden min-h-[90vh] md:min-h-0 flex flex-col justify-between">
       {/* Background industrial plant photography */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80&fit=crop"
           alt="Heavy industrial steel plant erection and machinery installation"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[68%_center] sm:object-center"
         />
-        {/* Layered cinematic dark gradient overlays for maximum contrast and depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/85 to-navy-900/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/30 to-navy-950/50" />
+        {/* Layered cinematic dark gradient overlays for maximum contrast, depth, and mobile legibility */}
+        <div className="absolute inset-0 bg-navy-950/85 sm:bg-gradient-to-r sm:from-navy-950/95 sm:via-navy-900/85 sm:to-navy-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/40 to-navy-950/60" />
       </div>
 
       {/* Dynamic ambient glow orbs */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-1" />
-      <div className="absolute top-1/2 -left-32 w-80 h-80 bg-arcblue/20 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute -top-32 -right-32 w-80 sm:w-96 h-80 sm:h-96 bg-orange-500/15 sm:bg-orange-500/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-1" />
+      <div className="absolute top-1/2 -left-32 w-64 sm:w-80 h-64 sm:h-80 bg-arcblue/15 sm:bg-arcblue/20 rounded-full blur-3xl pointer-events-none z-1" />
 
       {/* Safety orange accent bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 z-10" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28 lg:py-36">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-14 sm:py-20 md:py-28 lg:py-36">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2.5 bg-orange-500 text-white text-xs sm:text-sm font-heading font-bold uppercase tracking-widest px-4 py-2 rounded-lg mb-6 shadow-lg shadow-orange-500/25 border border-orange-400">
-            <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse shrink-0" />
-            <span>Industrial Engineering Contractor · Tadipatri, AP</span>
+          <div className="inline-flex max-w-full items-center gap-2 sm:gap-2.5 bg-orange-500 text-white text-[11px] sm:text-xs md:text-sm font-heading font-bold uppercase tracking-wider sm:tracking-widest px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg mb-5 sm:mb-6 shadow-lg shadow-orange-500/25 border border-orange-400">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white animate-pulse shrink-0" />
+            <span className="truncate sm:whitespace-normal">Industrial Engineering Contractor · Tadipatri, AP</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 tracking-tight animate-fade-in-up">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4 sm:mb-6 tracking-tight animate-fade-in-up">
             Steel Plant Erection &{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-500">
               Commissioning
             </span>{' '}
             Specialists
           </h1>
-          <p className="text-steel-200 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl animate-fade-in-up">
+          <p className="text-steel-200 text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-2xl animate-fade-in-up">
             JSS Engineering delivers turnkey machinery installation, plant erection, industrial civil works,
             and long-term O&amp;M for DRI, steel, and power plants across India.
           </p>
-          <div className="flex flex-wrap gap-4 animate-fade-in-up">
-            <Link href="/quote" className="btn-primary group">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-fade-in-up">
+            <Link href="/quote" className="btn-primary w-full sm:w-auto justify-center group text-base sm:text-lg py-2.5 sm:py-3">
               Request a Quote 
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
-            <Link href="/projects" className="btn-secondary group">
+            <Link href="/projects" className="btn-secondary w-full sm:w-auto justify-center group text-base sm:text-lg py-2.5 sm:py-3">
               View Our Projects
               <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
 
           {/* Trust badges */}
-          <div className="mt-10 flex flex-wrap gap-6 text-sm text-steel-300">
+          <div className="mt-8 sm:mt-10 flex flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm text-steel-300">
             {['UltraTech Cement', 'Western Coalfields', 'Rayalaseema Green Steel'].map((c) => (
-              <span key={c} className="flex items-center gap-2 transition-transform duration-300 hover:text-white hover:translate-x-0.5">
-                <CheckCircle2 size={15} className="text-orange-400 shrink-0" /> {c}
+              <span key={c} className="flex items-center gap-1.5 sm:gap-2 transition-transform duration-300 hover:text-white hover:translate-x-0.5">
+                <CheckCircle2 size={14} className="text-orange-400 shrink-0" /> {c}
               </span>
             ))}
           </div>
@@ -72,13 +72,13 @@ function Hero() {
 
       {/* Stats strip with hover transitions */}
       <div className="relative z-10 border-t border-navy-700/80 bg-navy-950/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 sm:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           {STATS.map((s) => (
-            <div key={s.label} className="group p-3 rounded-xl transition-all duration-300 hover:bg-navy-800/60 hover:-translate-y-1">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-orange-400 group-hover:text-orange-300 transition-colors">
+            <div key={s.label} className="group p-2 sm:p-3 rounded-xl transition-all duration-300 hover:bg-navy-800/60 hover:-translate-y-1">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-orange-400 group-hover:text-orange-300 transition-colors">
                 {s.value}
               </div>
-              <div className="text-steel-300 text-sm mt-1.5 font-medium">{s.label}</div>
+              <div className="text-steel-300 text-xs sm:text-sm mt-1 font-medium">{s.label}</div>
             </div>
           ))}
         </div>
