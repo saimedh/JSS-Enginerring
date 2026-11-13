@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0B2A4A;
+  --orange: #F26B1D;
+  --steel: #6B7785;
+  --arcblue: #1E88E5;
+  --furnace: #10151C;
+  --mill: #F5F7FA;
+  --ash: #D9DFE6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-mill text-furnace font-body antialiased selection:bg-orange-500 selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+
+  /* Custom Sleek Industrial Scrollbar */
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #071D33;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2F6FA0;
+    border-radius: 4px;
+    border: 2px solid #071D33;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F26B1D;
+  }
+}
+
+@layer components {
+  /* Buttons with Interactive Haptic Transitions */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 bg-orange-500 text-white font-heading font-bold text-lg px-7 py-3 rounded-lg shadow-md transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-500/30 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 overflow-hidden;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border-2 border-white/80 text-white font-heading font-semibold text-lg px-7 py-3 rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-navy-700 hover:border-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-orange-500 text-orange-500 font-heading font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 hover:bg-orange-500 hover:text-white hover:shadow-md hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400;
+  }
+
+  /* Section Typography */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy-700 leading-tight tracking-tight;
+  }
+  .section-subtitle {
+    @apply text-steel-500 text-base md:text-lg leading-relaxed;
+  }
+
+  /* Interactive Cards with Smooth Transitions */
+  .card-hover {
+    @apply transition-all duration-400 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-orange-300/60;
+  }
+  .nav-link {
+    @apply relative text-sm font-heading font-semibold uppercase tracking-wider text-navy-700 hover:text-orange-500 transition-colors duration-200 py-1;
+  }
+
+  /* Subtle Image Zoom Effect */
+  .img-zoom {
+    @apply transition-transform duration-700 ease-out group-hover:scale-108;
+  }
+}
+
+/* Seamless Client Marquee Animation */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}

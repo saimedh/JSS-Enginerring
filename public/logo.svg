@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <!-- Icon Mark -->
+  <g transform="translate(10, 10)">
+    <!-- Base Navy Shield / Hexagon -->
+    <path d="M 50 0 L 95 25 L 95 75 L 50 100 L 5 75 L 5 25 Z" fill="#0B2A4A" />
+    <!-- Orange I-beam / Bolt Accent -->
+    <path d="M 50 12 L 62 12 L 56 46 L 70 46 L 40 88 L 46 54 L 32 54 Z" fill="#F26B1D" />
+    <!-- Gear Tooth Accents -->
+    <rect x="44" y="0" width="12" height="6" fill="#6B7785" rx="1" />
+    <rect x="44" y="94" width="12" height="6" fill="#6B7785" rx="1" />
+    <rect x="0" y="46" width="6" height="12" fill="#6B7785" rx="1" />
+    <rect x="94" y="46" width="6" height="12" fill="#6B7785" rx="1" />
+  </g>
+  
+  <!-- Wordmark -->
+  <text x="130" y="62" font-family="'Rajdhani', 'Barlow Condensed', 'Arial Black', sans-serif" font-size="52" font-weight="800" fill="#0B2A4A" letter-spacing="1.5">
+    JSS <tspan fill="#F26B1D">ENGINEERING</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="132" y="92" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#6B7785" letter-spacing="4">
+    STEEL • POWER • EXECUTION
+  </text>
+</svg>
+
