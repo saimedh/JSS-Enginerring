@@ -1,6 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 
-export async function GET() {
+function isAuthorized(req: NextRequest): boolean {
+  const token = req.cookies.get('jss_admin_token')?.value
+  return token === 'authenticated_admin'
+}
+
+const patchSchema = z.object({
+  id: z.string().min(1),
+  status: z.enum(['NEW', 'CONTACTED', 'QUOTED', 'CLOSED']).optional(),
+  notes: z.string().max(5000).optional(),
+})
+
+export async function GET(req: NextRequest) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required' },
+      { status: 401 }
+    )
+  }
+
   try {
     const { PrismaClient } = await import('@prisma/client')
     const prisma = new PrismaClient()
@@ -16,8 +35,28 @@ export async function GET() {
 }
 
 export async function PATCH(req: NextRequest) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json(
+      { error: 'Unauthorized: Admin authentication required' },
+      { status: 401 }
+    )
+  }
+
   try {
-    const { id, status, notes } = await req.json()
+    const body = await req.json().catch(() => null)
+    if (!body) {
+      return NextResponse.json({ ok: false, error: 'Invalid request body' }, { status: 400 })
+    }
+
+    const parsed = patchSchema.safeParse(body)
+    if (!parsed.success) {
+      return NextResponse.json(
+        { ok: false, error: 'Validation error', issues: parsed.error.issues },
+        { status: 422 }
+      )
+    }
+
+    const { id, status, notes } = parsed.data
     const { PrismaClient } = await import('@prisma/client')
     const prisma = new PrismaClient()
 
@@ -34,4 +73,5 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'Failed to update enquiry' }, { status: 500 })
   }
 }
+
 

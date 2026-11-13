@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Inbox, FolderKanban, Users, FileText, ArrowRight } from 'lucide-react'
 import AdminLogoutButton from '@/components/AdminLogoutButton'
+import AdminAuthCheck from '@/components/AdminAuthCheck'
 
 export const metadata = {
   title: 'Admin Dashboard | JSS Engineering',
@@ -44,8 +45,9 @@ export default function AdminDashboardPage() {
   ]
 
   return (
-    <div className="py-10 bg-mill min-h-[85vh]">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <AdminAuthCheck>
+      <div className="py-10 bg-mill min-h-[85vh]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-ash gap-4">
           <div className="flex items-center gap-4">
@@ -128,5 +130,6 @@ export default function AdminDashboardPage() {
         </div>
       </div>
     </div>
-  )
+  </AdminAuthCheck>
+)
 }

@@ -1,18 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 const schema = z.object({
-  name: z.string().min(2),
-  company: z.string().optional(),
-  phone: z.string().min(7),
-  email: z.string().email(),
-  service: z.string().optional(),
-  industry: z.string().optional(),
-  location: z.string().optional(),
-  timeline: z.string().optional(),
-  message: z.string().min(5),
+  name: z.string().trim().min(2).max(100),
+  company: z.string().trim().max(150).optional(),
+  phone: z.string().trim().min(7).max(30),
+  email: z.string().trim().email().max(100),
+  service: z.string().trim().max(150).optional(),
+  industry: z.string().trim().max(150).optional(),
+  location: z.string().trim().max(150).optional(),
+  timeline: z.string().trim().max(100).optional(),
+  message: z.string().trim().min(5).max(5000),
   website: z.string().optional(), // honeypot
-  type: z.string().optional(),
+  type: z.string().trim().max(50).optional(),
 })
 
 // Simple in-memory rate limit (per IP, 5 req/15 min)
@@ -32,17 +41,17 @@ function rateLimit(ip: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown'
   if (!rateLimit(ip)) {
-    return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+    return NextResponse.json({ error: 'Too many requests. Please wait a few minutes before submitting again.' }, { status: 429 })
   }
 
   const body = await req.json().catch(() => null)
-  if (!body) return NextResponse.json({ error: 'Invalid body' }, { status: 400 })
+  if (!body) return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
 
-  // Honeypot
+  // Honeypot anti-spam check
   if (body.website) {
-    return NextResponse.json({ ok: true }) // silently discard
+    return NextResponse.json({ ok: true }) // silently discard bot submission
   }
 
   const parsed = schema.safeParse(body)
@@ -86,22 +95,31 @@ export async function POST(req: NextRequest) {
         auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
       })
 
+      const safeName = escapeHtml(data.name)
+      const safeCompany = data.company ? escapeHtml(data.company) : '—'
+      const safePhone = escapeHtml(data.phone)
+      const safeEmail = escapeHtml(data.email)
+      const safeService = data.service ? escapeHtml(data.service) : '—'
+      const safeIndustry = data.industry ? escapeHtml(data.industry) : '—'
+      const safeLocation = data.location ? escapeHtml(data.location) : '—'
+      const safeMessage = escapeHtml(data.message)
+
       // Notification to JSS
       await transporter.sendMail({
         from: `"JSS Website" <${process.env.SMTP_USER}>`,
         to: 'Jssengineering04@gmail.com',
-        subject: `New Enquiry from ${data.name} — ${data.company ?? 'Unknown Company'}`,
+        subject: `New Enquiry from ${safeName} — ${safeCompany}`,
         html: `
           <h2>New Enquiry via jssengineering.in</h2>
           <table border="0" cellpadding="6">
-            <tr><td><b>Name:</b></td><td>${data.name}</td></tr>
-            <tr><td><b>Company:</b></td><td>${data.company ?? '—'}</td></tr>
-            <tr><td><b>Phone:</b></td><td>${data.phone}</td></tr>
-            <tr><td><b>Email:</b></td><td>${data.email}</td></tr>
-            <tr><td><b>Service:</b></td><td>${data.service ?? '—'}</td></tr>
-            <tr><td><b>Industry:</b></td><td>${data.industry ?? '—'}</td></tr>
-            <tr><td><b>Location:</b></td><td>${data.location ?? '—'}</td></tr>
-            <tr><td><b>Message:</b></td><td>${data.message}</td></tr>
+            <tr><td><b>Name:</b></td><td>${safeName}</td></tr>
+            <tr><td><b>Company:</b></td><td>${safeCompany}</td></tr>
+            <tr><td><b>Phone:</b></td><td>${safePhone}</td></tr>
+            <tr><td><b>Email:</b></td><td>${safeEmail}</td></tr>
+            <tr><td><b>Service:</b></td><td>${safeService}</td></tr>
+            <tr><td><b>Industry:</b></td><td>${safeIndustry}</td></tr>
+            <tr><td><b>Location:</b></td><td>${safeLocation}</td></tr>
+            <tr><td><b>Message:</b></td><td>${safeMessage}</td></tr>
           </table>
         `,
       })
@@ -112,7 +130,7 @@ export async function POST(req: NextRequest) {
         to: data.email,
         subject: 'Thank you for your enquiry — JSS Engineering',
         html: `
-          <p>Dear ${data.name},</p>
+          <p>Dear ${safeName},</p>
           <p>Thank you for reaching out to <strong>JSS Engineering</strong>. We have received your enquiry and our team will get back to you within one business day.</p>
           <p>If you need immediate assistance, please call us at <strong>+91 98765 43210</strong> or reply to this email.</p>
           <br>
@@ -126,4 +144,5 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ ok: true })
 }
+
 

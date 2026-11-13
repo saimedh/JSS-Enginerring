@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Download, Search, Phone, Mail, MapPin, Calendar, RefreshCw, Save, Check } from 'lucide-react'
 import AdminLogoutButton from '@/components/AdminLogoutButton'
+import AdminAuthCheck from '@/components/AdminAuthCheck'
 
 type Enquiry = {
   id: string
@@ -81,6 +82,10 @@ export default function EnquiriesInboxPage() {
     setLoading(true)
     try {
       const res = await fetch('/api/admin/enquiries')
+      if (res.status === 401) {
+        window.location.href = '/admin/login'
+        return
+      }
       if (res.ok) {
         const data = await res.json()
         if (data.enquiries && data.enquiries.length > 0) {
@@ -199,8 +204,9 @@ export default function EnquiriesInboxPage() {
   }
 
   return (
-    <div className="py-8 bg-mill min-h-[85vh]">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <AdminAuthCheck>
+      <div className="py-8 bg-mill min-h-[85vh]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Top bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-ash gap-4">
           <div className="flex items-center gap-3">
@@ -417,5 +423,6 @@ export default function EnquiriesInboxPage() {
         </div>
       </div>
     </div>
-  )
+  </AdminAuthCheck>
+)
 }
